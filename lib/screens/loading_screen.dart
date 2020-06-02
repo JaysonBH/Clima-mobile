@@ -11,6 +11,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     Location location = Location();
     await location.getCurrentLocation();
     location.printCurrentLocation();
+    location.getData();
   }
 
   @override
