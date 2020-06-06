@@ -7,7 +7,14 @@ class WeatherModel {
     await location.getCurrentLocation();
     location.printCurrentLocation();
 
-    NetworkHelper networkHelper = NetworkHelper(location.getUrl());
+    NetworkHelper networkHelper = NetworkHelper(location.getLongLatUrl());
+    var weatherData = await networkHelper.getData();
+    return weatherData;
+  }
+
+  Future<dynamic> getCityWeather(String cityName) async {
+    NetworkHelper networkHelper =
+        NetworkHelper(Location().getUrlByLocationName(cityName));
     var weatherData = await networkHelper.getData();
     return weatherData;
   }

@@ -1,5 +1,7 @@
 import 'package:geolocator/geolocator.dart';
 
+const baseOpenWeatherMapsURL =
+    'https://api.openweathermap.org/data/2.5/weather';
 const apiKey = '4ac2294bbaeec8fcfa64ec335977e83d';
 
 class Location {
@@ -22,7 +24,11 @@ class Location {
     print('Lat: $_latitude, Long: $_longitude');
   }
 
-  String getUrl() {
-    return 'https://api.openweathermap.org/data/2.5/weather?lat=$_latitude&lon=$_longitude&units=imperial&appid=$apiKey';
+  String getLongLatUrl() {
+    return '$baseOpenWeatherMapsURL?lat=$_latitude&lon=$_longitude&units=imperial&appid=$apiKey';
+  }
+
+  String getUrlByLocationName(String cityName) {
+    return '$baseOpenWeatherMapsURL?q=$cityName&units=imperial&appid=$apiKey';
   }
 }
